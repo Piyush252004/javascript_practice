@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    // setTimeout(function(){               // This is a function which is used to call browser api. it is not part of core javascript.
+    //     console.log("Piyush");
+    // }, 2000)                            // setTimeout is nothing but a function which tells browsees to print or execute function after that given duration. as an ex. in this we have given 2sec that's why when we run this code in console then it will execute function after 2sec.
+
+    // const sayPiyush = function () {
+    //     console.log("Piyush");
+    // }
+    // const changeText = function () {
+    //     document.querySelector('h1').innerHTML= "Whats the update"
+    // }
+
+    // const changeMe = setTimeout(changeText, 2000)            // With the help of this we can change out web pages text after given duration. it will change our text in the browser in given time duration.
+
+    // document.querySelector('#stop').addEventListener('click',function () {          // when we click on the stop button we can stop our setTimeout function and we can stop from changing our text.
+    //     clearTimeout(changeMe)                  // this method is used to stop our setTimeout execution it is used when we want to stop our setTimeout property.
+    //     console.log("Stopped");
+    // })
+
+    // const sayDate = function(){
+    //     console.log(Date.now());
+    // }
+
+    // document.querySelector('#start').addEventListener('click',function() {
+    //     let intervalid = setInterval(sayDate, 1000)
+    // })
+
+    // document.querySelector('#stop').addEventListener('click', function() {
+    //     clearInterval()
+    // })
+
+    //generate a random color
+
+    const randomColor = function() {                            // This is used to generate random color in the form of hexadecimal numbers.
+        const hex= '0123456789ABCDEF';
+        let color = '#';
+        for (let i=0; i<6; i++) {
+            color += hex[Math.floor(Math.random() * 16)];
+        }
+        return color
+    };
+    let intervalId;
+    const startChangingColor = function(){
+
+        if (!intervalId) {
+            intervalId = setInterval(changeBgColor, 1000);
+        }
+        
+        function changeBgColor() {
+            document.body.style.backgroundColor = randomColor();        // This is used to change background color of whole body.
+        }
+    };
+    const stopChangingColor = function(){           // This is used to stop changing the background colors.
+        clearInterval(intervalId);
+        intervalId = null;
+    }
+
+
+    document.querySelector('#start').addEventListener('click',startChangingColor);          // This is used to change background colors when we click on start button only.
+    document.querySelector('#stop').addEventListener('click',stopChangingColor);            // This is used to stop changing background colors when we click on stop button only.
+</script>
+</html>

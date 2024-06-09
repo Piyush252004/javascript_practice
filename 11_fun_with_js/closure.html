@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cLosre</title>
+</head>
+<body style="background-color: #212121;">
+    <button id="orange">orange</button>
+    <button id="green">green</button>
+</body>
+
+<script>
+    // function init(){
+    //     let name = 'Mozilla';
+    //     function displayName() {
+    //         console.log(name);
+    //     }
+    //     displayName();
+    // }
+    // init();
+
+    // Lexical Scoping
+
+    // function outer(){
+    //     let username = "Piyush"
+    //     function inner(){
+    //         let secret = "my123"
+    //         console.log(`inner func ${username}`);
+    //     }
+    //     function innerTwo(){
+    //         console.log("inner", username);
+    //         console.log(mysecret);              // This will not execute because we can not use our sibling functions properties or values in our function.
+    //     }
+    //     inner()
+    //     innerTwo()
+
+    // }
+    // outer()
+    // console.log(`outer func. ${username}`);
+
+
+    // Closure
+
+    // function makeFunc(){
+    //     const name = "Mozilla";
+    //     function displayName(){
+    //         console.log(name);
+    //     }
+    //     return displayName;           // This will not return only displayName function because if it will return child function then we have used some parent properties in it so that it shows an error so that while return child func. there are not only that function but there whole lexical scope will be return because of memory reference of parent function this is called closure.
+    // }
+
+    // const muFunc = makeFunc()               
+    // myFunc()
+
+
+</script>
+<script>
+    // Real time example of closure 
+
+    // document.getElementById('orange').onclick = function(){         // onClick take function for run their code.
+    //     document.body.style.backgroundColor = 'orange'              // This is used to style whole body to convert it's background color in orange when we click on orange button.
+    // }
+    // document.getElementById('green').onclick = function(){
+    //     document.body.style.backgroundColor= 'green'
+    // }
+
+    // This is a good program for changing background color while clicking on button now what happens if i have to told that i have given 500 buttons and 500 colors to change my background so that is not a good practice that we do copy paste above code for 500 time then in that problem our closure work.
+
+    function clickHandler(color){
+        // document.body.style.backgroundColor =  `${color}`       // This is not work becase if we execute code then we get background color as color without clicking on button
+
+        return function (){                                         // There is comes closure property in this return we not return only this function but we can return whole lexical scope so that we can change backgrond color while clicking on button
+            document.body.style.backgroundColor =  `${color}`
+        }
+
+    }
+
+    document.getElementById('orange').onclick = clickHandler("orange")
+    document.getElementById('green').onclick = clickHandler("green")
+
+</script>
+</html>

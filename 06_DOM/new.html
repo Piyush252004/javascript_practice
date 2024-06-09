@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <div class="parent">
+      <div class="day">Monday</div>
+      <div class="day">Tuesday</div>
+      <div class="day">Wednesday</div>
+      <div class="day">Thursday</div>  
+    </div>
+</body>
+<script>
+    document.querySelector('.parent')               // This is used to select html attributes so that we can perform any programs on it so that we can apply javascript property on it.
+    console.log(parent);
+    console.log(parent.children);
+    console.log(parent.children[1]);
+
+    for (let i=0; i<parent.children.length; i++){
+        console.log(parent.children[i].innerHTML);
+    }
+
+    parent.children[1].style.color = "orange"
+    // console.log(parent.firstElementChild);
+    // console.log(parent.lastElementChild);
+
+    const dayOne = document.querySelector('.day')
+    console.log(dayOne);
+    console.log(dayOne.parentElement);                  //It will tell us which is a parent element of that element.
+    console.log(dayOne.nextElementSibling);             // THis will tell us who is sibling of this day. means it will return same node element of dayOne.
+
+    console.log("Nodes:", parent.childNodes);           // THis will return all the nodes which will applied on query structure tree. it will consider all the things which we perform in query structure tree.
+</script>
+</html>

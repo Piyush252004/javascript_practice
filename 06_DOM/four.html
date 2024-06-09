@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+
+<body style="background-color: #212121; color: #fff;">
+    <ul class="language">
+        <li>javascript</li>
+        <!-- <li>javascript</li>
+        <li>javascript</li> -->
+    </ul>
+    
+</body>
+<script>
+    function addLanguage(langName) {
+        const li = document.createElement('li');
+        li.innerHTML = `${langName}`
+        document.querySelector('.language').appendChild(li)       // This is used to append child in to the class.
+    }
+
+    addLanguage("Python")
+
+    function addOptiLanguage(langName){
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(langName))
+        document.querySelector('.language').appendChild(li)        // It is also used to append child in to the class.
+    }
+    addOptiLanguage("golang")
+
+    //Edit in the values of this list
+
+    const secondLang = document.querySelector("li:nth-child(2)")
+    // secondLang.innerHTML = "MOJO"                               // IT is good but not recommended because not optimized approach.
+    const newLi = document.createElement('li')
+    newLi.textContent = "MOJO"
+    secondLang.replaceWith(newLi)                                  // This is used to update or replace values in our list element.
+
+    //edit
+    const firstLang = document.querySelector("li:first-child")
+    firstLang.outerHTML = '<li>TypeScript</li>'                    // outerHTML is also used to edit value of existing item of our list but it is not recommended because we have to add html tags also to update the value.
+
+    //Remove
+
+    const lastLang = document.querySelector('li:last-child')
+    lastLang.remove()                                              // Remove method is used to remove li tag with it's content.
+
+</script>
+</html>
